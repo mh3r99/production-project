@@ -22,7 +22,5 @@ export default (env: BuildEnv) => {
     port: PORT,
   });
 
-  console.log(config);
-
   return config;
 };
