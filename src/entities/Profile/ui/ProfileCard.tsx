@@ -1,9 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
 import { Loader } from 'shared/ui/Loader/Loader';
+import { Avatar } from 'shared/ui/Avatar/Avatar';
 import cls from './ProfileCard.module.scss';
 import { Profile } from '../model/types/profile';
 
@@ -13,14 +14,18 @@ interface ProfileCardProps{
   isLoading?:boolean;
   error?:string;
   readonly?:boolean;
-  onChangeFirstname:(value:string)=>void;
-  onChangeLastname:(value:string)=>void;
-  onChangeAge:(value:string)=>void;
-  onChangeCity:(value:string)=>void;
+  onChangeFirstname?:(value:string)=>void;
+  onChangeLastname?:(value:string)=>void;
+  onChangeAge?:(value:string)=>void;
+  onChangeCity?:(value:string)=>void;
+  onChangeUsername?:(value:string)=>void;
+  onChangeAvatar?:(value:string)=>void;
 }
 
 export const ProfileCard = ({
-    className, data, isLoading, error, readonly, onChangeFirstname, onChangeLastname, onChangeAge, onChangeCity,
+    className, data, isLoading, error, readonly,
+    onChangeFirstname, onChangeLastname, onChangeAge,
+    onChangeCity, onChangeUsername, onChangeAvatar,
 }:ProfileCardProps) => {
     const { t } = useTranslation('profile');
 
@@ -53,12 +58,23 @@ export const ProfileCard = ({
         );
     }
 
+    const mods:Mods = {
+        [cls.editing]: !readonly,
+    };
+
     return (
         <div
             className={
-                classNames(cls.ProfileCard, {}, [className])
+                classNames(cls.ProfileCard, mods, [className])
             }
         >
+            {
+                data?.avatar && (
+                    <div className={cls.avatarWrapper}>
+                        <Avatar src={data.avatar} />
+                    </div>
+                )
+            }
 
             <Input
                 value={data?.first}
@@ -86,6 +102,20 @@ export const ProfileCard = ({
                 placeholder={t('Город')}
                 className={cls.input}
                 onChange={onChangeCity}
+                readonly={readonly}
+            />
+            <Input
+                value={data?.username}
+                placeholder={t('Введите имя пользователя')}
+                className={cls.input}
+                onChange={onChangeUsername}
+                readonly={readonly}
+            />
+            <Input
+                value={data?.avatar}
+                placeholder={t('Введите ссылку на аватар')}
+                className={cls.input}
+                onChange={onChangeAvatar}
                 readonly={readonly}
             />
 
