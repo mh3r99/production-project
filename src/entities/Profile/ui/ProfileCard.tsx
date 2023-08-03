@@ -15,10 +15,12 @@ interface ProfileCardProps{
   readonly?:boolean;
   onChangeFirstname:(value:string)=>void;
   onChangeLastname:(value:string)=>void;
+  onChangeAge:(value:string)=>void;
+  onChangeCity:(value:string)=>void;
 }
 
 export const ProfileCard = ({
-    className, data, isLoading, error, readonly, onChangeFirstname, onChangeLastname,
+    className, data, isLoading, error, readonly, onChangeFirstname, onChangeLastname, onChangeAge, onChangeCity,
 }:ProfileCardProps) => {
     const { t } = useTranslation('profile');
 
@@ -70,6 +72,20 @@ export const ProfileCard = ({
                 placeholder={t('Ваше фамилия')}
                 className={cls.input}
                 onChange={onChangeLastname}
+                readonly={readonly}
+            />
+            <Input
+                value={data?.age}
+                placeholder={t('Ваш возраст')}
+                className={cls.input}
+                onChange={onChangeAge}
+                readonly={readonly}
+            />
+            <Input
+                value={data?.city}
+                placeholder={t('Город')}
+                className={cls.input}
+                onChange={onChangeCity}
                 readonly={readonly}
             />
 
