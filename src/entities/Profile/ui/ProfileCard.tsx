@@ -90,7 +90,7 @@ export const ProfileCard = ({
             />
             <Input
                 value={data?.lastname}
-                placeholder={t('Ваше фамилия')}
+                placeholder={t('Ваша фамилия')}
                 className={cls.input}
                 onChange={onChangeLastname}
                 readonly={readonly}
