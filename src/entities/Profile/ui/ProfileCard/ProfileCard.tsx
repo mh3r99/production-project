@@ -8,7 +8,7 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
 import cls from './ProfileCard.module.scss';
-import { Profile } from '../model/types/profile';
+import { Profile } from '../../model/types/profile';
 
 interface ProfileCardProps{
   className?:string;
