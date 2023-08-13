@@ -1,7 +1,8 @@
 @import "reset";
 @import "variables/global";
-@import "theme/normal";
-@import "theme/dark";
+@import "themes/normal";
+@import "themes/dark";
+@import "themes/orange";
 
 body {
     font: var(--font-m);
