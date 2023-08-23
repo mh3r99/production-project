@@ -1,5 +1,11 @@
-import React from 'react';
+import { ArticleCodeBlock } from 'entities/Article/model/types/article';
+import React, { memo } from 'react';
 
-export const ArticleCodeBlockComponent = () => (
+interface ArticleCodeBlockComponentProps{
+    className?:string;
+    block:ArticleCodeBlock
+}
+
+export const ArticleCodeBlockComponent = memo(({ className, block }:ArticleCodeBlockComponentProps) => (
     <div>ArticleCodeBlockComponent</div>
-);
+));

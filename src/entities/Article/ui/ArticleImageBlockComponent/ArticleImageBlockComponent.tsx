@@ -1,5 +1,11 @@
-import React from 'react';
+import { ArticleImageBlock } from 'entities/Article/model/types/article';
+import React, { memo } from 'react';
 
-export const ArticleImageBlockComponent = () => (
+interface ArticleImageBlockComponentProps{
+    className?:string;
+    block:ArticleImageBlock
+}
+
+export const ArticleImageBlockComponent = memo(({ className, block }:ArticleImageBlockComponentProps) => (
     <div>ArticleImageBlockComponent</div>
-);
+));
