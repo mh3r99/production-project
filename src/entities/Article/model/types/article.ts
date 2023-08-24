@@ -1,4 +1,4 @@
-export enum ArticleBLockType {
+export enum ArticleBlockType {
   CODE = 'CODE',
   IMAGE = 'IMAGE',
   TEXT = 'TEXT',
@@ -6,22 +6,22 @@ export enum ArticleBLockType {
 
 export interface ArticleBlockBase {
   id: string;
-  type: ArticleBLockType;
+  type: ArticleBlockType;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
-  type: ArticleBLockType.CODE;
+  type: ArticleBlockType.CODE;
   code: string;
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
-  type: ArticleBLockType.IMAGE;
+  type: ArticleBlockType.IMAGE;
   src: string;
   title: string;
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
-  type: ArticleBLockType.TEXT;
+  type: ArticleBlockType.TEXT;
   paragraphs: string[];
   title?: string;
 }
