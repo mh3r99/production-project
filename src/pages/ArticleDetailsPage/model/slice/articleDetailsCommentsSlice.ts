@@ -19,7 +19,7 @@ export const articleDetailsCommentsSlice = createSlice({
         ids: [],
         entities: {},
     }),
-    reducers: { },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(fetchCommentsByArticleId.pending, (state) => {
@@ -40,5 +40,4 @@ export const articleDetailsCommentsSlice = createSlice({
     },
 });
 
-export const { actions: articleDetailsCommentsActions } = articleDetailsCommentsSlice;
 export const { reducer: articleDetailsCommentsReducer } = articleDetailsCommentsSlice;

@@ -14,6 +14,8 @@ import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { useInitialEffect } from 'shared/lib/hooks/useAppDispatch/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -22,6 +24,8 @@ const reducers: ReducersList = {
 
 const ProfilePage = () => {
     const { t } = useTranslation('profile');
+    const { id } = useParams<{ id: string }>();
+
     const dispatch = useAppDispatch();
 
     const formData = useSelector(getProfileForm);
@@ -38,62 +42,62 @@ const ProfilePage = () => {
         [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
     };
 
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
-    const onChangeFirstname = useCallback((value:string) => {
+    const onChangeFirstname = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
             first: value,
         }));
     }, [dispatch]);
 
-    const onChangeLastname = useCallback((value:string) => {
+    const onChangeLastname = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
             lastname: value,
         }));
     }, [dispatch]);
 
-    const onChangeAge = useCallback((value:string) => {
+    const onChangeAge = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
             age: +value.replace(/[^0-9]/g, ''),
         }));
     }, [dispatch]);
 
-    const onChangeCity = useCallback((value:string) => {
+    const onChangeCity = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
             city: value,
         }));
     }, [dispatch]);
 
-    const onChangeUsername = useCallback((value:string) => {
+    const onChangeUsername = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
             username: value,
         }));
     }, [dispatch]);
 
-    const onChangeAvatar = useCallback((value:string) => {
+    const onChangeAvatar = useCallback((value: string) => {
         dispatch(profileActions.updateProfile({
             avatar: value,
         }));
     }, [dispatch]);
 
-    const onChangeCurrency = useCallback((currency:Currency) => {
+    const onChangeCurrency = useCallback((currency: Currency) => {
         dispatch(profileActions.updateProfile({
             currency,
         }));
     }, [dispatch]);
 
-    const onChangeCountry = useCallback((country:Country) => {
+    const onChangeCountry = useCallback((country: Country) => {
         dispatch(profileActions.updateProfile({
             country,
         }));
     }, [dispatch]);
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={reducers}>
             <div>
                 <ProfilePageHeader />
                 {

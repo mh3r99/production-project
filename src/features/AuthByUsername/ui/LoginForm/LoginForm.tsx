@@ -15,19 +15,19 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getLoginUsername } from '../../model/selectors/getLoginUsername/getLoginUsername';
 import cls from './LoginForm.module.scss';
 
-export interface LoginFormProps{
-  className?:string;
-  onSuccess: ()=>void;
+export interface LoginFormProps {
+    className?: string;
+    onSuccess: () => void;
 }
 
-const initialReducers:ReducersList = {
+const initialReducers: ReducersList = {
     loginForm: loginReducer,
 };
 
 const LoginForm = React.memo(({
     className,
     onSuccess,
-}:LoginFormProps) => {
+}: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
@@ -36,23 +36,26 @@ const LoginForm = React.memo(({
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginLoading);
 
-    const onChangeUsername = useCallback((value:string) => {
+    const onChangeUsername = useCallback((value: string) => {
         dispatch(loginActions.setUsername(value));
     }, [dispatch]);
 
-    const onChangePassword = useCallback((value:string) => {
+    const onChangePassword = useCallback((value: string) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
     const onLoginClick = useCallback(async () => {
-        const result = await dispatch(loginByUsername({ username, password }));
+        const result = await dispatch(loginByUsername({
+            username,
+            password,
+        }));
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
     }, [dispatch, username, password, onSuccess]);
 
     return (
-        <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
+        <DynamicModuleLoader reducers={initialReducers}>
             <div className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')} />
                 {error && <Text text={t('Вы ввели неверный логин или пароль')} theme={TextTheme.ERROR} />}

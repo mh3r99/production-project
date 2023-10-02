@@ -22,16 +22,19 @@ import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleC
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 
-interface ArticleDetailsProps{
-    id:string;
-    className?:string;
+interface ArticleDetailsProps {
+    id: string;
+    className?: string;
 }
 
-const reducers:ReducersList = {
+const reducers: ReducersList = {
     articleDetails: articleDetailsReducer,
 };
 
-export const ArticleDetails = memo(({ id, className }:ArticleDetailsProps) => {
+export const ArticleDetails = memo(({
+    id,
+    className,
+}: ArticleDetailsProps) => {
     const dispatch = useAppDispatch();
     const { t } = useTranslation('article-details');
 
@@ -39,7 +42,7 @@ export const ArticleDetails = memo(({ id, className }:ArticleDetailsProps) => {
     const error = useSelector(getArticleDetailsError);
     const article = useSelector(getArticleDetailsData);
 
-    const renderBlock = useCallback((block:ArticleBlock) => {
+    const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
         case ArticleBlockType.CODE:
             return <ArticleCodeBlockComponent key={block.id} className={cls.block} block={block} />;
@@ -105,7 +108,7 @@ export const ArticleDetails = memo(({ id, className }:ArticleDetailsProps) => {
     }
 
     return (
-        <DynamicModuleLoader removeAfterUnmount reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(cls.ArticleDetails, {}, [className])}>
                 {content}
             </div>
