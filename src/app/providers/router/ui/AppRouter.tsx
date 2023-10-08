@@ -1,16 +1,13 @@
-import React, {
-    Suspense, memo, useCallback, useMemo,
-} from 'react';
-import { useSelector } from 'react-redux';
+import React, { memo, Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { AppRouteProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
-import { getUserAuthData } from 'entities/User';
 import { RequireAuth } from './RequireAuth';
 
 const AppRouter = () => {
-    const renderWithWrapper = useCallback((route:AppRouteProps) => {
-        const element = <div className="page-wrapper">{route.element}</div>;
+    const renderWithWrapper = useCallback((route: AppRouteProps) => {
+        // eslint-disable-next-line react/jsx-no-useless-fragment
+        const element = <>{route.element}</>;
 
         return (
             <Route
@@ -24,7 +21,8 @@ const AppRouter = () => {
     return (
         <Suspense fallback={<PageLoader />}>
             <Routes>
-                {Object.values(routeConfig).map(renderWithWrapper)}
+                {Object.values(routeConfig)
+                    .map(renderWithWrapper)}
             </Routes>
         </Suspense>
     );

@@ -32,7 +32,6 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
     } = props;
 
     const onClick = (newView: ArticleView) => () => {
-        console.log('aaaaaaaaaaaa');
         onViewClick?.(newView);
     };
 

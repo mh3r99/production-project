@@ -12,11 +12,12 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList/fetchArticlesList';
 import { useSelector } from 'react-redux';
 import {
-    getArticlesPageError,
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { ArticleView, ArticleViewSelector } from 'entities/Article';
+import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
 
 const reducers: ReducersList = {
     articlesPage: articlesPageReducer,
@@ -27,33 +28,34 @@ const ArticlesPage = () => {
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
-    const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
 
     useInitialEffect(() => {
-        dispatch(fetchArticlesList());
         dispatch(articlesPageActions.initState());
+        dispatch(fetchArticlesList({ page: 1 }));
     });
 
     const onChangeView = useCallback(
         (view: ArticleView) => {
-            dispatch(
-                articlesPageActions.setView(view),
-            );
+            dispatch(articlesPageActions.setView(view));
         },
         [dispatch],
     );
 
+    const onLoadNextPart = useCallback(() => {
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
+
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div>
+            <Page onScrollEnd={onLoadNextPart}>
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

@@ -15,6 +15,7 @@ import {
 } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slice/articleDetailsCommentsSlice';
@@ -36,7 +37,7 @@ const ArticleDetailsPage = () => {
     });
 
     if (!id) {
-        return <div>{t('Статья не найдена')}</div>;
+        return <Page className={classNames(cls.ArticleDetailsPage, {}, [])}>{t('Статья не найдена')}</Page>;
     }
 
     const onSendComment = (text: string) => {
@@ -49,7 +50,7 @@ const ArticleDetailsPage = () => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames(cls.ArticleDetailsPage, {}, [])}>
+            <Page className={classNames(cls.ArticleDetailsPage, {}, [])}>
                 <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
                     {t('Назад к списку')}
                 </Button>
@@ -60,7 +61,7 @@ const ArticleDetailsPage = () => {
                     isLoading={commentsIsLoading}
                     comments={comments}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };
