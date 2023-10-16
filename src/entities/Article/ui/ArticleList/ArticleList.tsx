@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { HTMLAttributeAnchorTarget, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from 'shared/ui/Text/Text';
@@ -12,6 +12,8 @@ interface ArticleListProps {
     className?: string;
     isLoading?: boolean;
     view?: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
+
 }
 
 const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
@@ -25,6 +27,7 @@ export const ArticleList = memo(({
     articles,
     isLoading,
     view = ArticleView.SMALL,
+    target,
 }: ArticleListProps) => {
     const { t } = useTranslation();
     const renderArticles = (article: Article) => (
@@ -33,6 +36,7 @@ export const ArticleList = memo(({
             article={article}
             view={view}
             className={cls.card}
+            target={target}
 
         />
     );
