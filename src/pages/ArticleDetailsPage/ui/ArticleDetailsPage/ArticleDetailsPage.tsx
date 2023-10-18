@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -13,8 +13,6 @@ import { AddCommentForm } from 'features/addCommentForm';
 import {
     addCommentForArticle,
 } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/Page';
 import { getArticleComments } from 'pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice';
 import {
@@ -26,6 +24,9 @@ import {
     fetchArticleRecommendations,
 } from 'pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
 import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices';
+import {
+    ArticleDetailsPageHeader,
+} from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import cls from './ArticleDetailsPage.module.scss';
@@ -42,7 +43,6 @@ const ArticleDetailsPage = () => {
     const recommendations = useSelector(getArticleRecommendations.selectAll);
     const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
     const recommendationsIsLoading = useSelector(getArticleRecommendationsIsLoading);
-    const navigate = useNavigate();
 
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
@@ -57,16 +57,10 @@ const ArticleDetailsPage = () => {
         dispatch(addCommentForArticle(text));
     };
 
-    const onBackToList = () => {
-        navigate(RoutePath.articles);
-    };
-
     return (
         <DynamicModuleLoader reducers={reducers}>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [])}>
-                <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-                    {t('Назад к списку')}
-                </Button>
+                <ArticleDetailsPageHeader />
                 <ArticleDetails id={id} />
                 <Text size={TextSize.L} className={cls.commentTitle} title={t('Рекомендуем')} />
                 <ArticleList
