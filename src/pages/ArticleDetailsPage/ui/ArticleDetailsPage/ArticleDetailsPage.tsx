@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -19,12 +18,7 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = () => {
     const dispatch = useAppDispatch();
-    const { t } = useTranslation('article-details');
     const { id } = useParams<{ id: string }>();
-
-    if (!id) {
-        return <Page className={classNames(cls.ArticleDetailsPage, {}, [])}>{t('Статья не найдена')}</Page>;
-    }
 
     return (
         <DynamicModuleLoader reducers={reducers}>
