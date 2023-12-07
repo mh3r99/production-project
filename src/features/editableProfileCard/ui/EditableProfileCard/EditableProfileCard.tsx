@@ -22,9 +22,8 @@ import {
     getProfileForm,
     getProfileLoading,
     getProfileReadonly,
-    getProfileValidateErrors,
+    getProfileValidateErrors, ValidateProfileError,
 } from '../../index';
-import { ValidateProfileError } from '../../model/types/editableProfileCardSchema';
 
 const reducers: ReducersList = {
     profile: profileReducer,

@@ -3,5 +3,6 @@ import { counterReducer } from './model/slice/counterSlice';
 import Counter from './ui/Counter';
 
 export {
-    CounterSchema, counterReducer, Counter,
+    counterReducer, Counter,
 };
+export type { CounterSchema };
