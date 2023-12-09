@@ -1,7 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import React, { memo, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
@@ -17,13 +16,14 @@ import { VStack } from 'shared/ui/Stack';
 import {
     EditableProfileCardHeader,
 } from '../EditableProfileCardHeader/EditableProfileCardHeader';
+import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
+import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoading';
+import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import {
-    getProfileError,
-    getProfileForm,
-    getProfileLoading,
-    getProfileReadonly,
-    getProfileValidateErrors, ValidateProfileError,
-} from '../../index';
+    getProfileValidateErrors,
+} from '../../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
+import { ValidateProfileError } from '../../model/consts/consts';
 
 const reducers: ReducersList = {
     profile: profileReducer,
