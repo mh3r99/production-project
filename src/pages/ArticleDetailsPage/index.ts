@@ -2,5 +2,5 @@ export { ArticleDetailsPageAsync as ArticleDetailsPage } from './ui/ArticleDetai
 export type { ArticleDetailsCommentsSchema } from './model/types/ArticleDetailsCommentsSchema';
 export type {
     ArticleDetailsRecommendationsSchema,
-} from 'pages/ArticleDetailsPage/model/types/ArticleDetailsRecommendationsSchema';
-export type { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage/model/types';
+} from '@/pages/ArticleDetailsPage/model/types/ArticleDetailsRecommendationsSchema';
+export type { ArticleDetailsPageSchema } from '@/pages/ArticleDetailsPage/model/types';
