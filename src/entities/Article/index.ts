@@ -6,4 +6,6 @@ export { ArticleSortSelector } from './ui/ArticleSortSelector/ArticleSortSelecto
 export { ArticleTypeTabs } from '@/entities/Article/ui/ArticleTypeTabs/ArticleTypeTabs';
 export { getArticleDetailsData } from '@/entities/Article/model/selectors/articleDetails';
 export { ArticleList } from './ui/ArticleList/ArticleList';
-export { ArticleView, ArticleSortField, ArticleBlockType } from '@/entities/Article/model/consts/consts';
+export {
+    ArticleView, ArticleSortField, ArticleBlockType, ArticleType,
+} from '@/entities/Article/model/consts/consts';
