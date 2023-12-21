@@ -61,8 +61,9 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-undef': 'off',
         'react/no-array-index-key': 'off',
-        'prod-project-plugin/path-checker': ['error', { alias: '@'}],
-        'prod-project-plugin/public-api-imports': ['error', { alias: '@'}],
+        'prod-project-plugin/path-checker': ['error', { alias: '@' }],
+        'prod-project-plugin/public-api-imports': ['error',
+            { alias: '@', testFilesPatterns: ['**/*.test.*', '**/*.story.*', '**/StoreDecorator.tsx'] }],
     },
     globals: {
         __IS_DEV__: true,
