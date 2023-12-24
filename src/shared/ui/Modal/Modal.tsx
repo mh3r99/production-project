@@ -5,7 +5,7 @@ import { Mods, classNames } from '@/shared/lib/classNames/classNames';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { Overlay } from '../Overlay/Overlay';
 import cls from './Modal.module.scss';
-import Portal from '../Portal/Portal';
+import { Portal } from '../Portal/Portal';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 
 interface ModalProps {
@@ -18,7 +18,7 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-const Modal: React.FC<ModalProps> = ({
+export const Modal: React.FC<ModalProps> = ({
     className, children, isOpen, onClose,
     lazy,
 }) => {
@@ -43,5 +43,3 @@ const Modal: React.FC<ModalProps> = ({
         </Portal>
     );
 };
-
-export default Modal;
