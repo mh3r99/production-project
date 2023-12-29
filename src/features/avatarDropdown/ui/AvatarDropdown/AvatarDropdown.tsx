@@ -43,7 +43,7 @@ export const AvatarDropdown = () => {
                 },
             ]}
             trigger={
-                <Avatar size={30} src={authData.avatar} />
+                <Avatar fallbackInverted size={30} src={authData.avatar} />
             }
         />
     );
