@@ -90,7 +90,10 @@ export const ArticleListItem = memo(
                     <div className={cls.imageWrapper}>
                         <AppImage
                             fallback={<Skeleton width={200} height={200} />}
-                            alt={article.title} src={article.img} className={cls.img} />
+                            alt={article.title}
+                            src={article.img}
+                            className={cls.img}
+                        />
                         <Text text={article.createdAt} className={cls.date} />
                     </div>
                     <div className={cls.infoWrapper}>
