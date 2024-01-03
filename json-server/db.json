@@ -670,6 +670,15 @@
         "MANAGER"
       ],
       "avatar": "https://techcrunch.com/wp-content/uploads/2021/01/GettyImages-1005344670.jpg"
+    },
+    {
+      "id": "4",
+      "username": "testuser",
+      "password": "123",
+      "roles": [
+        "ADMIN"
+      ],
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     }
   ],
   "profile": [
