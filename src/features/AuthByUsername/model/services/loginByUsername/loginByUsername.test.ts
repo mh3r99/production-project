@@ -3,7 +3,7 @@ import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk
 import { loginByUsername } from './loginByUsername';
 
 describe('loginByUsername.test', () => {
-    test('success login', async () => {
+    test('success common', async () => {
         const userValue = { username: 'admin', id: '1' };
 
         const thunk = new TestAsyncThunk(loginByUsername);
@@ -21,7 +21,7 @@ describe('loginByUsername.test', () => {
         expect(result.payload).toEqual(userValue);
     });
 
-    test('error login', async () => {
+    test('error common', async () => {
         const thunk = new TestAsyncThunk(loginByUsername);
 
         thunk.api.post.mockReturnValue(Promise.resolve({
