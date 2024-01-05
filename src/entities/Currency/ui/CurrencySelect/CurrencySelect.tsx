@@ -4,11 +4,11 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { ListBox } from '@/shared/ui/Popups';
 import { Currency } from '../../model/types/currency';
 
-interface CurrencySelectProps{
-  className?:string;
-  value?:Currency;
-  onChange?:(value:Currency)=>void;
-  readonly?:boolean
+interface CurrencySelectProps {
+    className?: string;
+    value?: Currency;
+    onChange?: (value: Currency) => void;
+    readonly?: boolean;
 }
 
 const options = [
@@ -18,37 +18,39 @@ const options = [
     { value: Currency.RUB, content: Currency.RUB },
 ];
 
-export const CurrencySelect = memo(({
-    className, value, onChange, readonly,
-}:CurrencySelectProps) => {
-    const { t } = useTranslation();
+export const CurrencySelect = memo(
+    ({ className, value, onChange, readonly }: CurrencySelectProps) => {
+        const { t } = useTranslation();
 
-    const onChangeHandler = useCallback((value:string) => {
-        onChange?.(value as Currency);
-    }, [onChange]);
+        const onChangeHandler = useCallback(
+            (value: string) => {
+                onChange?.(value as Currency);
+            },
+            [onChange],
+        );
 
-    return (
-        <ListBox
-            className={classNames('', {}, [className])}
-            value={value}
-            defaultValue={t('Укажите валюту')}
-            label={t('Укажите валюту')}
-            items={options}
-            onChange={onChangeHandler}
-            readonly={readonly}
-            direction="top right"
-        />
+        return (
+            <ListBox
+                className={classNames('', {}, [className])}
+                value={value}
+                defaultValue={t('Укажите валюту')}
+                label={t('Укажите валюту')}
+                items={options}
+                onChange={onChangeHandler}
+                readonly={readonly}
+                direction="top right"
+            />
+        );
 
-    );
-
-    // return (
-    //     <Select
-    //         className={classNames('', {}, [className])}
-    //         label={t('Укажите валюту')}
-    //         options={options}
-    //         value={value}
-    //         onChange={onChangeHandler}
-    //         readonly={readonly}
-    //     />
-    // );
-});
+        // return (
+        //     <Select
+        //         className={classNames('', {}, [className])}
+        //         label={t('Укажите валюту')}
+        //         options={options}
+        //         value={value}
+        //         onChange={onChangeHandler}
+        //         readonly={readonly}
+        //     />
+        // );
+    },
+);

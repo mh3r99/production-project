@@ -4,7 +4,10 @@ import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
-import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { loginActions, loginReducer } from '../../model/slice/loginSlice';
@@ -24,10 +27,7 @@ const initialReducers: ReducersList = {
     loginForm: loginReducer,
 };
 
-const LoginForm = React.memo(({
-    className,
-    onSuccess,
-}: LoginFormProps) => {
+const LoginForm = React.memo(({ className, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
 
@@ -36,19 +36,27 @@ const LoginForm = React.memo(({
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginLoading);
 
-    const onChangeUsername = useCallback((value: string) => {
-        dispatch(loginActions.setUsername(value));
-    }, [dispatch]);
+    const onChangeUsername = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setUsername(value));
+        },
+        [dispatch],
+    );
 
-    const onChangePassword = useCallback((value: string) => {
-        dispatch(loginActions.setPassword(value));
-    }, [dispatch]);
+    const onChangePassword = useCallback(
+        (value: string) => {
+            dispatch(loginActions.setPassword(value));
+        },
+        [dispatch],
+    );
 
     const onLoginClick = useCallback(async () => {
-        const result = await dispatch(loginByUsername({
-            username,
-            password,
-        }));
+        const result = await dispatch(
+            loginByUsername({
+                username,
+                password,
+            }),
+        );
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
@@ -58,7 +66,12 @@ const LoginForm = React.memo(({
         <DynamicModuleLoader reducers={initialReducers}>
             <div className={classNames(cls.LoginForm, {}, [className])}>
                 <Text title={t('Форма авторизации')} />
-                {error && <Text text={t('Вы ввели неверный логин или пароль')} theme={TextTheme.ERROR} />}
+                {error && (
+                    <Text
+                        text={t('Вы ввели неверный логин или пароль')}
+                        theme={TextTheme.ERROR}
+                    />
+                )}
                 <Input
                     autofocus
                     type="text"
@@ -66,7 +79,6 @@ const LoginForm = React.memo(({
                     className={cls.input}
                     onChange={onChangeUsername}
                     value={username}
-
                 />
                 <Input
                     type="password"
@@ -82,7 +94,6 @@ const LoginForm = React.memo(({
                     disabled={isLoading}
                 >
                     {t('Войти')}
-
                 </Button>
             </div>
         </DynamicModuleLoader>

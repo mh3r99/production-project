@@ -16,47 +16,62 @@ interface ArticleListProps {
     target?: HTMLAttributeAnchorTarget;
 }
 
-const getSkeletons = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
-    .fill(0)
-    .map((item, index) => (
-        <ArticleListItemSkeleton className={cls.card} key={index} view={view} />
-    ));
+const getSkeletons = (view: ArticleView) =>
+    new Array(view === ArticleView.SMALL ? 9 : 3)
+        .fill(0)
+        .map((item, index) => (
+            <ArticleListItemSkeleton
+                className={cls.card}
+                key={index}
+                view={view}
+            />
+        ));
 
-export const ArticleList = memo(({
-    className,
-    articles,
-    isLoading,
-    view = ArticleView.SMALL,
-    target,
-}: ArticleListProps) => {
-    const { t } = useTranslation();
+export const ArticleList = memo(
+    ({
+        className,
+        articles,
+        isLoading,
+        view = ArticleView.SMALL,
+        target,
+    }: ArticleListProps) => {
+        const { t } = useTranslation();
 
-    const isBig = view === ArticleView.BIG;
+        const isBig = view === ArticleView.BIG;
 
-    if (!isLoading && !articles.length) {
+        if (!isLoading && !articles.length) {
+            return (
+                <div
+                    className={classNames(cls.ArticleList, {}, [
+                        className,
+                        cls[view],
+                    ])}
+                >
+                    <Text size={TextSize.L} title={t('Статьи не найдены')} />
+                </div>
+            );
+        }
+
         return (
-            <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-                <Text size={TextSize.L} title={t('Статьи не найдены')} />
+            <div
+                data-testid="ArticleList"
+                className={classNames(cls.ArticleList, {}, [
+                    className,
+                    cls[view],
+                ])}
+            >
+                {articles.map((item) => (
+                    <ArticleListItem
+                        article={item}
+                        view={view}
+                        target={target}
+                        key={item.id}
+                        className={cls.card}
+                    />
+                ))}
+
+                {isLoading && getSkeletons(view)}
             </div>
         );
-    }
-
-    return (
-        <div
-            data-testid="ArticleList"
-            className={classNames(cls.ArticleList, {}, [className, cls[view]])}
-        >
-            { articles.map((item) => (
-                <ArticleListItem
-                    article={item}
-                    view={view}
-                    target={target}
-                    key={item.id}
-                    className={cls.card}
-                />
-            ))}
-
-            {isLoading && getSkeletons(view)}
-        </div>
-    );
-});
+    },
+);

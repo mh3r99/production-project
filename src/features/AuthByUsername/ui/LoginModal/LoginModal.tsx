@@ -4,13 +4,13 @@ import { Modal } from '@/shared/ui/Modal';
 import { Loader } from '@/shared/ui/Loader';
 import { LoginFormAsync } from '../LoginForm/LoginForm.async';
 
-interface LoginModalProps{
-  className?:string;
-  isOpen:boolean;
-  onClose:()=>void;
+interface LoginModalProps {
+    className?: string;
+    isOpen: boolean;
+    onClose: () => void;
 }
 
-export const LoginModal:React.FC<LoginModalProps> = ({
+export const LoginModal: React.FC<LoginModalProps> = ({
     className,
     isOpen,
     onClose,

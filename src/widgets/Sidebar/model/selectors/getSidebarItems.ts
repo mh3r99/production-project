@@ -6,7 +6,10 @@ import ProfileIcon from '@/shared/assets/icons/profile-20-20.svg';
 import ArticleIcon from '@/shared/assets/icons/article-20-20.svg';
 import { SidebarItemType } from '../types/sidebar';
 import {
-    getRouteAbout, getRouteArticles, getRouteMain, getRouteProfile,
+    getRouteAbout,
+    getRouteArticles,
+    getRouteMain,
+    getRouteProfile,
 } from '@/shared/const/router';
 
 export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
@@ -21,7 +24,6 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
             Icon: AboutIcon,
             text: 'О сайте',
         },
-
     ];
     if (userData) {
         sidebarItemsList.push(

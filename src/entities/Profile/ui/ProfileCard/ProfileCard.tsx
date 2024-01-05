@@ -49,9 +49,10 @@ export const ProfileCard = ({
             <HStack
                 max
                 justify="center"
-                className={
-                    classNames(cls.ProfileCard, {}, [className, cls.loading])
-                }
+                className={classNames(cls.ProfileCard, {}, [
+                    className,
+                    cls.loading,
+                ])}
             >
                 <Loader />
             </HStack>
@@ -63,9 +64,10 @@ export const ProfileCard = ({
             <HStack
                 max
                 justify="center"
-                className={
-                    classNames(cls.ProfileCard, {}, [className, cls.error])
-                }
+                className={classNames(cls.ProfileCard, {}, [
+                    className,
+                    cls.error,
+                ])}
             >
                 <Text
                     theme={TextTheme.ERROR}
@@ -85,17 +87,13 @@ export const ProfileCard = ({
         <VStack
             max
             gap="8"
-            className={
-                classNames(cls.ProfileCard, mods, [className])
-            }
+            className={classNames(cls.ProfileCard, mods, [className])}
         >
-            {
-                data?.avatar && (
-                    <HStack max justify="center">
-                        <Avatar src={data.avatar} />
-                    </HStack>
-                )
-            }
+            {data?.avatar && (
+                <HStack max justify="center">
+                    <Avatar src={data.avatar} />
+                </HStack>
+            )}
 
             <Input
                 value={data?.first}
@@ -103,7 +101,6 @@ export const ProfileCard = ({
                 onChange={onChangeFirstname}
                 readonly={readonly}
                 data-testid="ProfileCard.firstname"
-
             />
             <Input
                 value={data?.lastname}
@@ -111,7 +108,6 @@ export const ProfileCard = ({
                 onChange={onChangeLastname}
                 readonly={readonly}
                 data-testid="ProfileCard.lastname"
-
             />
             <Input
                 value={data?.age}

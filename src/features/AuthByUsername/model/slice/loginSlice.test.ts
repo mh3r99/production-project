@@ -8,15 +8,21 @@ describe('loginSlice.test', () => {
             username: 'admin',
         };
 
-        expect(loginReducer(state as LoginSchema, loginActions.setUsername('admin')))
-            .toEqual({ username: 'admin' });
+        expect(
+            loginReducer(
+                state as LoginSchema,
+                loginActions.setUsername('admin'),
+            ),
+        ).toEqual({ username: 'admin' });
     });
 
     test('test set isLoading', () => {
         const state: DeepPartial<LoginSchema> = {
             isLoading: false,
         };
-        expect(loginReducer(state as LoginSchema, loginByUsername.pending)).toEqual({
+        expect(
+            loginReducer(state as LoginSchema, loginByUsername.pending),
+        ).toEqual({
             error: undefined,
             isLoading: true,
         });

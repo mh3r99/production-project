@@ -12,9 +12,7 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { ArticleView, ArticleBlockType } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';
-import {
-    Article, ArticleTextBlock,
-} from '../../model/types/article';
+import { Article, ArticleTextBlock } from '../../model/types/article';
 import { getRouteArticleDetails } from '@/shared/const/router';
 import { AppImage } from '@/shared/ui/AppImage';
 import { Skeleton } from '@/shared/ui/Skeleton';
@@ -27,15 +25,12 @@ interface ArticleListProps {
 }
 
 export const ArticleListItem = memo(
-    ({
-        className,
-        article,
-        view,
-        target,
-    }: ArticleListProps) => {
+    ({ className, article, view, target }: ArticleListProps) => {
         const { t } = useTranslation();
 
-        const types = <Text text={article.type.join(', ')} className={cls.types} />;
+        const types = (
+            <Text text={article.type.join(', ')} className={cls.types} />
+        );
         const views = (
             <>
                 <Text text={String(article.views)} className={cls.views} />
@@ -51,13 +46,22 @@ export const ArticleListItem = memo(
             return (
                 <div
                     data-testid="ArticleListItem"
-                    className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
+                    className={classNames(cls.ArticleListItem, {}, [
+                        className,
+                        cls[view],
+                    ])}
                 >
                     <Card className={cls.card}>
                         <div className={cls.header}>
                             <Avatar size={30} src={article.user.avatar} />
-                            <Text text={article.user.username} className={cls.username} />
-                            <Text text={article.createdAt} className={cls.date} />
+                            <Text
+                                text={article.user.username}
+                                className={cls.username}
+                            />
+                            <Text
+                                text={article.createdAt}
+                                className={cls.date}
+                            />
                         </div>
                         <Text title={article.title} className={cls.title} />
                         {types}
@@ -68,10 +72,16 @@ export const ArticleListItem = memo(
                             alt={article.title}
                         />
                         {textBlock && (
-                            <ArticleTextBlockComponent block={textBlock} className={cls.textBlock} />
+                            <ArticleTextBlockComponent
+                                block={textBlock}
+                                className={cls.textBlock}
+                            />
                         )}
                         <div className={cls.footer}>
-                            <AppLink target={target} to={getRouteArticleDetails(article.id)}>
+                            <AppLink
+                                target={target}
+                                to={getRouteArticleDetails(article.id)}
+                            >
                                 <Button theme={ButtonTheme.OUTLINE}>
                                     {t('Читать далее...')}
                                 </Button>
@@ -88,7 +98,10 @@ export const ArticleListItem = memo(
                 data-testid="ArticleListItem"
                 target={target}
                 to={getRouteArticleDetails(article.id)}
-                className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
+                className={classNames(cls.ArticleListItem, {}, [
+                    className,
+                    cls[view],
+                ])}
             >
                 <Card className={cls.card}>
                     <div className={cls.imageWrapper}>

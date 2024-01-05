@@ -12,10 +12,7 @@ interface SidebarItemProps {
     collapsed: boolean;
 }
 
-export const SidebarItem = memo(({
-    item,
-    collapsed,
-}: SidebarItemProps) => {
+export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
     const { t } = useTranslation();
 
     const isAuth = useSelector(getUserAuthData);

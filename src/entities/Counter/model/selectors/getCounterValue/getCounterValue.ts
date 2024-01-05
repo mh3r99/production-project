@@ -4,4 +4,6 @@ import { buildSelector } from '@/shared/lib/store';
 //     createSelector(getCounter,
 //         (counter) => counter.value);
 
-export const [useCounterValue, getCounterValue] = buildSelector((state) => state.counter.value);
+export const [useCounterValue, getCounterValue] = buildSelector(
+    (state) => state.counter.value,
+);

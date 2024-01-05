@@ -23,34 +23,46 @@ export const ArticleSortSelector = ({
 }: ArticleSortSelectorProps) => {
     const { t } = useTranslation();
 
-    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(() => [
-        {
-            value: ArticleSortField.CREATED,
-            content: t('дата создания'),
-        },
-        {
-            value: ArticleSortField.TITLE,
-            content: t('названию'),
-        }, {
-            value: ArticleSortField.VIEWS,
-            content: t('просмотрам'),
-        },
-    ], [t]);
+    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(
+        () => [
+            {
+                value: ArticleSortField.CREATED,
+                content: t('дата создания'),
+            },
+            {
+                value: ArticleSortField.TITLE,
+                content: t('названию'),
+            },
+            {
+                value: ArticleSortField.VIEWS,
+                content: t('просмотрам'),
+            },
+        ],
+        [t],
+    );
 
-    const orderOptions = useMemo<SelectOption<SortOrder>[]>(() => [
-        {
-            value: 'asc',
-            content: t('возрастанию'),
-        },
-        {
-            value: 'desc',
-            content: t('убыванию'),
-        },
-    ], [t]);
+    const orderOptions = useMemo<SelectOption<SortOrder>[]>(
+        () => [
+            {
+                value: 'asc',
+                content: t('возрастанию'),
+            },
+            {
+                value: 'desc',
+                content: t('убыванию'),
+            },
+        ],
+        [t],
+    );
 
     return (
         <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
-            <Select label={t('Сортировать ПО')} options={sortFieldOptions} value={sort} onChange={onChangeSort} />
+            <Select
+                label={t('Сортировать ПО')}
+                options={sortFieldOptions}
+                value={sort}
+                onChange={onChangeSort}
+            />
             <Select
                 className={cls.order}
                 label={t('по')}
