@@ -8,3 +8,6 @@ export {
     isUserManager,
 } from '@/entities/User/model/selectors/roleSelector';
 export { UserRole } from '@/entities/User/model/consts/consts';
+export type { JsonSettings } from '@/entities/User/model/types/jsonSettings';
+export { useJsonSettings } from '@/entities/User/model/selectors/jsonSettings';
+export { saveJsonSettings } from '@/entities/User/model/services/saveJsonSettings';
