@@ -9,6 +9,7 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features/ToggleFeatures/ToggleFeatures';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 export const App = () => {
     const { theme } = useTheme();
@@ -40,11 +41,11 @@ export const App = () => {
             on={
                 <div className={classNames('app_redesigned', {}, [theme])}>
                     <Suspense fallback="">
-                        <Navbar />
-                        <div className="content-page">
-                            <Sidebar />
-                            <AppRouter />
-                        </div>
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                        />
                     </Suspense>
                 </div>
             }
