@@ -1,6 +1,6 @@
 import { useCallback, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ListBox } from 'src/shared/ui/deprecated/Popups';
+import { ListBox } from '@/shared/ui/deprecated/Popups';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Currency } from '../../model/types/currency';
 

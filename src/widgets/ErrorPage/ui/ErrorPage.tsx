@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from 'src/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/deprecated/Button';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './ErrorPage.module.scss';
 

@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { memo, Suspense, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { Text, TextSize } from 'src/shared/ui/deprecated/Text';
-import { VStack } from 'src/shared/ui/deprecated/Stack';
-import { Loader } from 'src/shared/ui/deprecated/Loader';
+import { Text, TextSize } from '@/shared/ui/deprecated/Text';
+import { VStack } from '@/shared/ui/deprecated/Stack';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { AddCommentForm } from '@/features/addCommentForm';
 import { CommentList } from '@/entities/Comment';

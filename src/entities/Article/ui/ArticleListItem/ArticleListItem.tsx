@@ -1,14 +1,13 @@
 import React, { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Text } from 'src/shared/ui/deprecated/Text';
-
-import { Icon } from 'src/shared/ui/deprecated/Icon';
-import { Card } from 'src/shared/ui/deprecated/Card';
-import { Button, ButtonTheme } from 'src/shared/ui/deprecated/Button';
-import { Avatar } from 'src/shared/ui/deprecated/Avatar';
-import { AppLink } from 'src/shared/ui/deprecated/AppLink';
-import { AppImage } from 'src/shared/ui/deprecated/AppImage';
-import { Skeleton } from 'src/shared/ui/deprecated/Skeleton';
+import { Text } from '@/shared/ui/deprecated/Text';
+import { Icon } from '@/shared/ui/deprecated/Icon';
+import { Card } from '@/shared/ui/deprecated/Card';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Avatar } from '@/shared/ui/deprecated/Avatar';
+import { AppLink } from '@/shared/ui/deprecated/AppLink';
+import { AppImage } from '@/shared/ui/deprecated/AppImage';
+import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
 import { ArticleView, ArticleBlockType } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../../ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticleListItem.module.scss';

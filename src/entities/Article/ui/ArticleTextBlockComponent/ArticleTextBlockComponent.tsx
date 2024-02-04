@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Text } from 'src/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/deprecated/Text';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ArticleTextBlock } from '../../model/types/article';
 import cls from './ArticleTextBlockComponent.module.scss';

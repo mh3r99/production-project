@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
-import { Button, ButtonTheme } from 'src/shared/ui/deprecated/Button';
-import { Icon } from 'src/shared/ui/deprecated/Icon';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Icon } from '@/shared/ui/deprecated/Icon';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import ThemeIcon from '@/shared/assets/icons/theme-light.svg';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';

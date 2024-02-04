@@ -1,10 +1,10 @@
 import { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Button, ButtonTheme } from 'src/shared/ui/deprecated/Button';
-import { Text, TextTheme } from 'src/shared/ui/deprecated/Text';
-import { AppLink, AppLinkTheme } from 'src/shared/ui/deprecated/AppLink';
-import { HStack } from 'src/shared/ui/deprecated/Stack';
+import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { AppLink, AppLinkTheme } from '@/shared/ui/deprecated/AppLink';
+import { HStack } from '@/shared/ui/deprecated/Stack';
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { classNames } from '@/shared/lib/classNames/classNames';
