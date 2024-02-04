@@ -1,11 +1,11 @@
 import { memo, useCallback } from 'react';
+import { Button, ButtonTheme } from 'src/shared/ui/deprecated/Button';
+import { Icon } from 'src/shared/ui/deprecated/Icon';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import ThemeIcon from '@/shared/assets/icons/theme-light.svg';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { saveJsonSettings } from '@/entities/User';
-import { Icon } from '@/shared/ui/Icon';
 
 interface ThemeSwitcherProps {
     className?: string;
