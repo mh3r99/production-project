@@ -6,9 +6,6 @@ interface PortalProps {
     element?: HTMLElement;
 }
 
-/**
- * @deprecated
- */
 export const Portal: React.FC<PortalProps> = ({
     children,
     element = document.body,
