@@ -18,6 +18,7 @@ import { ArticlePageGreeting } from '@/features/articlePageGreeting';
 import { ToggleFeatures } from '@/shared/lib/features/ToggleFeatures/ToggleFeatures';
 import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { ViewSelectorContainer } from '../ViewSelectorContainer/ViewSelectorContainer';
+import { FiltersContainer } from '../FiltersContainer/FiltersContainer';
 
 const reducers: ReducersList = {
     articlesPage: articlesPageReducer,
@@ -45,6 +46,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
             on={
                 <StickyContentLayout
                     left={<ViewSelectorContainer />}
+                    right={<FiltersContainer />}
                     content={
                         <Page
                             data-testid="ArticlesPage"
