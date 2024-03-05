@@ -7,6 +7,8 @@ import cls from './ListBox.module.scss';
 import { DropdownDirection } from '../../../../../types/ui';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
+import { Icon } from '../../../Icon';
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 
 export interface ListBoxItem<T extends string> {
     value: string;
@@ -57,7 +59,11 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                     disabled={readonly}
                     className={popupCls.trigger}
                 >
-                    <Button variant="filled" disabled={readonly}>
+                    <Button
+                        variant="filled"
+                        disabled={readonly}
+                        addonRight={<Icon Svg={ArrowIcon} />}
+                    >
                         {selectedItem?.content ?? defaultValue}
                     </Button>
                 </HListBox.Button>
