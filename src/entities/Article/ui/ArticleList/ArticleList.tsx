@@ -7,6 +7,8 @@ import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListIte
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
+import { ToggleFeatures } from '@/shared/lib/features/ToggleFeatures/ToggleFeatures';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
     articles: Article[];
@@ -37,7 +39,21 @@ export const ArticleList = memo(
     }: ArticleListProps) => {
         const { t } = useTranslation();
 
-        const isBig = view === ArticleView.BIG;
+        const content = (
+            <>
+                {articles.map((item) => (
+                    <ArticleListItem
+                        article={item}
+                        view={view}
+                        target={target}
+                        key={item.id}
+                        className={cls.card}
+                    />
+                ))}
+
+                {isLoading && getSkeletons(view)}
+            </>
+        );
 
         if (!isLoading && !articles.length) {
             return (
@@ -53,25 +69,34 @@ export const ArticleList = memo(
         }
 
         return (
-            <div
-                data-testid="ArticleList"
-                className={classNames(cls.ArticleList, {}, [
-                    className,
-                    cls[view],
-                ])}
-            >
-                {articles.map((item) => (
-                    <ArticleListItem
-                        article={item}
-                        view={view}
-                        target={target}
-                        key={item.id}
-                        className={cls.card}
-                    />
-                ))}
-
-                {isLoading && getSkeletons(view)}
-            </div>
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <HStack
+                        gap="16"
+                        wrap="wrap"
+                        data-testid="ArticleList"
+                        className={classNames(
+                            cls.ArticleListRedesigned,
+                            {},
+                            [],
+                        )}
+                    >
+                        {content}
+                    </HStack>
+                }
+                off={
+                    <div
+                        data-testid="ArticleList"
+                        className={classNames(cls.ArticleList, {}, [
+                            className,
+                            cls[view],
+                        ])}
+                    >
+                        {content}
+                    </div>
+                }
+            />
         );
     },
 );

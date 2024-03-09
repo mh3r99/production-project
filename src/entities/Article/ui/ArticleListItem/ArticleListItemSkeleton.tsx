@@ -15,6 +15,12 @@ interface ArticleListItemSkeletonProps {
 
 export const ArticleListItemSkeleton = memo(
     ({ className, view }: ArticleListItemSkeletonProps) => {
+        const mainClass = toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => cls.ArticleListItemRedesigned,
+            off: () => cls.ArticleListItem,
+        });
+
         const Skeleton = toggleFeatures({
             name: 'isAppRedesigned',
             on: () => SkeletonRedesigned,
@@ -30,7 +36,7 @@ export const ArticleListItemSkeleton = memo(
         if (view === ArticleView.BIG) {
             return (
                 <div
-                    className={classNames(cls.ArticleListItem, {}, [
+                    className={classNames(mainClass, {}, [
                         className,
                         cls[view],
                     ])}
