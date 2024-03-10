@@ -7,7 +7,7 @@ import { ArticleListItemSkeleton } from '../../ui/ArticleListItem/ArticleListIte
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { Article } from '../../model/types/article';
 import cls from './ArticleList.module.scss';
-import { ToggleFeatures } from '@/shared/lib/features/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/features/components/ToggleFeatures/ToggleFeatures';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {

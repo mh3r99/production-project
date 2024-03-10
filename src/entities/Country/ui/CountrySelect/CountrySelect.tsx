@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Country } from '../../model/types/country';
-import { ToggleFeatures } from '@/shared/lib/features/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/features/components/ToggleFeatures/ToggleFeatures';
 import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface CountrySelectProps {

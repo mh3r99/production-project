@@ -7,7 +7,7 @@ import ThemeIcon from '@/shared/assets/icons/theme.svg';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { saveJsonSettings } from '@/entities/User';
-import { ToggleFeatures } from '@/shared/lib/features/ToggleFeatures/ToggleFeatures';
+import { ToggleFeatures } from '@/shared/lib/features/components/ToggleFeatures/ToggleFeatures';
 import { Icon } from '@/shared/ui/redesigned/Icon';
 
 interface ThemeSwitcherProps {
