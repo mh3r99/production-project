@@ -2,7 +2,8 @@ import React, { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextSize } from '@/shared/ui/deprecated/Text';
-import { Skeleton } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { Avatar } from '@/shared/ui/deprecated/Avatar';
 import { Icon } from '@/shared/ui/deprecated/Icon';
 import { HStack, VStack } from '@/shared/ui/redesigned/Stack';
@@ -27,6 +28,7 @@ import cls from './ArticleDetails.module.scss';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface ArticleDetailsProps {
     id?: string;
@@ -44,6 +46,12 @@ export const ArticleDetails = memo(({ id, className }: ArticleDetailsProps) => {
     const isLoading = useSelector(getArticleDetailsIsLoading);
     const error = useSelector(getArticleDetailsError);
     const article = useSelector(getArticleDetailsData);
+
+    const Skeleton = toggleFeatures({
+        name: 'isAppRedesigned',
+        on: () => SkeletonRedesigned,
+        off: () => SkeletonDeprecated,
+    });
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         switch (block.type) {
