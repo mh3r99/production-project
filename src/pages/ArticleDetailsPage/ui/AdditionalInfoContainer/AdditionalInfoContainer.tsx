@@ -24,7 +24,7 @@ export const AdditionalInfoContainer = () => {
     const { user, createdAt, views } = article;
     return (
         <div>
-            <Card className={cls.card} padding="24" border="br_round">
+            <Card className={cls.card} padding="24" border="br_partial">
                 <ArticleAdditionalInfo
                     author={user}
                     createdAt={createdAt}

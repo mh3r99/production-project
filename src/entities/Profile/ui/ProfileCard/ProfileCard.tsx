@@ -35,7 +35,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     const { t } = useTranslation('profile');
     const { isLoading, error } = props;
 
-    if (!isLoading) {
+    if (isLoading) {
         return (
             <ToggleFeatures
                 feature="isAppRedesigned"

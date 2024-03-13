@@ -61,7 +61,7 @@ export const CommentCard = memo(
             <ToggleFeatures
                 feature="isAppRedesigned"
                 on={
-                    <Card max padding="24" border="br_round">
+                    <Card max padding="24" border="br_partial">
                         <VStack
                             data-testid="CommentCard.Content"
                             gap="8"
