@@ -25,6 +25,7 @@ import { Input } from '@/shared/ui/redesigned/Input';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { VStack } from '@/shared/ui/redesigned/Stack';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 
 export interface LoginFormProps {
     className?: string;
@@ -43,6 +44,8 @@ const LoginForm = React.memo(({ className, onSuccess }: LoginFormProps) => {
     const password = useSelector(getLoginPassword);
     const error = useSelector(getLoginError);
     const isLoading = useSelector(getLoginLoading);
+
+    const forceUpdate = useForceUpdate();
 
     const onChangeUsername = useCallback(
         (value: string) => {
@@ -67,8 +70,9 @@ const LoginForm = React.memo(({ className, onSuccess }: LoginFormProps) => {
         );
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
+            forceUpdate();
         }
-    }, [dispatch, username, password, onSuccess]);
+    }, [dispatch, username, password, onSuccess, forceUpdate]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
@@ -127,7 +131,7 @@ const LoginForm = React.memo(({ className, onSuccess }: LoginFormProps) => {
                             onChange={onChangeUsername}
                             value={username}
                         />
-                        <Input
+                        <InputDeprecated
                             type="password"
                             placeholder={t('Введите пароль')}
                             className={cls.input}
