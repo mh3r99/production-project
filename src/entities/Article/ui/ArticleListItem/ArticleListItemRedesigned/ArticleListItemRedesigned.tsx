@@ -14,7 +14,7 @@ import { AppImage } from '@/shared/ui/redesigned/AppImage';
 import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 import { Button } from '@/shared/ui/redesigned/Button';
 import { Avatar } from '@/shared/ui/redesigned/Avatar';
-import { ArticleBlockType, ArticleView } from '../../..';
+import { ArticleBlockType, ArticleView } from '../../../model/consts/consts';
 import { ArticleTextBlock } from '../../../model/types/article';
 
 export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {

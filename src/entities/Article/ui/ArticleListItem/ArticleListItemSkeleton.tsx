@@ -6,7 +6,7 @@ import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton'
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import cls from './ArticleListItem.module.scss';
 import { toggleFeatures } from '@/shared/lib/features';
-import { ArticleView } from '../..';
+import { ArticleView } from '../../model/consts/consts';
 import { ToggleFeatures } from '@/shared/lib/features/components/ToggleFeatures/ToggleFeatures';
 
 interface ArticleListItemSkeletonProps {
